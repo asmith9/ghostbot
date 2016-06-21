@@ -6,10 +6,10 @@ var config = {
 	channels: ["##pasta"],
 	ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
 	nick: "ghost_bot",
-	userName: "Agent_Smith1",
+	userName: "username",
 	realName: "man",
 	nickservEnabled: true,
-	nickservPass: "anopna"
+	nickservPass: "userpass"
 }
 var bot = new irc.Client(config.server, config.nick, config)
 bot.addListener("message", function(from, to, message) {
