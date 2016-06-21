@@ -5,11 +5,11 @@ var config = {
 	server: "irc.rizon.net",
 	channels: ["##pasta"],
 	ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
-	nick: "dragons",
-	userName: "Agent_Smith1",
-	realName: "man",
+	nick: "usernick",
+	userName: "username",
+	realName: "realname",
 	nickservEnabled: true,
-	nickservPass: "anopna"
+	nickservPass: "userpass"
 }
 
 var bot = new irc.Client(config.server, config.nick, config)
