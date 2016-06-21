@@ -6,11 +6,12 @@ var config = {
 	channels: ["##pasta"],
 	ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
 	nick: "ghost_bot",
-	userName: "username",
+	userName: "Agent_Smith1",
 	realName: "man",
 	nickservEnabled: true,
-	nickservPass: "pass"
+	nickservPass: "anopna"
 }
+var bot = new irc.Client(config.server, config.nick, config)
 bot.addListener("message", function(from, to, message) {
 	if (config.ignoreList.indexOf(from) >= 0){ return false }
 		var man
@@ -30,7 +31,7 @@ bot.addListener("message", function(from, to, message) {
 		   }
 		}
 		loop(5);
-);
+});
 
 bot.addListener("ctcp-version", function(from, to, message) {
 	bot.notice(from, "\01VERSION ayylmao\01")
