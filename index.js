@@ -30,13 +30,7 @@ bot.addListener("message", function(from, to, message) {
 		   }
 		}
 		loop(5);
-/*	for (var i = 5; i > 1; i--) {
-		setTimeout((i) => {
-		bot.say(to, i);
-		}, i * 3000, i);
-	}
-*/
-});
+);
 
 bot.addListener("ctcp-version", function(from, to, message) {
 	bot.notice(from, "\01VERSION ayylmao\01")
