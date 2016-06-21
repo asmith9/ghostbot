@@ -3,13 +3,13 @@ var irc = require("irc");
 
 var config = {
 	server: "irc.rizon.net",
-	channels: ["#pasta"],
+	channels: ["##pasta"],
 	ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
-	nick: "usernick",
+	nick: "ghost_bot",
 	userName: "username",
 	realName: "man",
 	nickservEnabled: true,
-	nickservPass: "userpass"
+	nickservPass: "pass"
 }
 
 var bot = new irc.Client(config.server, config.nick, config)
@@ -28,18 +28,21 @@ bot.addListener("message", function(from, to, message) {
 		   ){man=message;}
 	
 	});
-	pause(3000);
-	bot.say(to, '5')
-	pause(3000);
-	bot.say(to, '4')
-	pause(3000);
-	bot.say(to, '3')
-	pause(3000);
-	bot.say(to, '2')
-	pause(3000);
-	bot.say(to, '1')
-	pause(3000);
-	bot.say(to, "boo! ^.~")
+	function loop(n) {
+		if (n>0) {
+		   setTimeout(function()
+		   { bot.say(to,n); loop(n -1 );}, 3000);
+		   } else {
+			   bot.say(to,"boo! ^.~");
+		   }
+		}
+		loop(5);
+/*	for (var i = 5; i > 1; i--) {
+		setTimeout((i) => {
+		bot.say(to, i);
+		}, i * 3000, i);
+	}
+*/
 });
 
 bot.addListener("ctcp-version", function(from, to, message) {
