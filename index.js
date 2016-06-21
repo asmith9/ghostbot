@@ -58,6 +58,6 @@ bot.on("registered", function() {
 
 bot.on("invite", function(channel, nick) {
 	bot.join(channel)
-	return bot.say(channel, nick + " has invited me here, enjoy man!")
+	return bot.say(channel, nick + " here lies ghost bot, rip jones McCucky!")
 })
 
