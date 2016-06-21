@@ -11,13 +11,6 @@ var config = {
 	nickservEnabled: true,
 	nickservPass: "pass"
 }
-
-var bot = new irc.Client(config.server, config.nick, config)
-	function pause(milliseconds) {
-		var dt = new Date();
-		while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
-	}
-
 bot.addListener("message", function(from, to, message) {
 	if (config.ignoreList.indexOf(from) >= 0){ return false }
 		var man
