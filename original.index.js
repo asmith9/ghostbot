@@ -12,13 +12,18 @@ var config = {
 	nickservPass: "userpass"
 }
 var bot = new irc.Client(config.server, config.nick, config)
-
 bot.addListener("message", function(from, to, message) {
 	if (config.ignoreList.indexOf(from) >= 0){ return false }
 		var man
 	message.split(" ").forEach(function(element){
 		word = element.replace(/[^a-zA-Z]+/g, '')
-		if (word.toLowerCase() == "spook") {
+		
+		/*if (message.indexOf('spook')>-1
+		   ){man=message;}
+*/	
+		if (message.indexOf(1)=='spook'
+		){man=message;}
+	});
 	function loop(n) {
 		if (n>0) {
 		   setTimeout(function()
@@ -28,8 +33,6 @@ bot.addListener("message", function(from, to, message) {
 		   }
 		}
 		loop(5);
-		}
-	});
 });
 
 bot.addListener("ctcp-version", function(from, to, message) {
