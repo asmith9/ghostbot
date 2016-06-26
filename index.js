@@ -3,7 +3,7 @@ var math = require("math");
 
 var config = {
     server: "irc.rizon.net",
-    channels: ["#pasta"],
+    channels: ["##pasta"],
     ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
     nick: "ghost_bot",
     userName: "username",
@@ -33,15 +33,15 @@ bot.addListener("message", function(from, to, message) {
         word = element.replace(/[^a-zA-Z]+/g, '')
         if (word.toLowerCase() == "rip") {
             function loop(n) {
-                var tombstone = ["――٩―|________|✿｡――――/―ノ―――ヾ―――", "    | ~----~ |",
-                    "  ☆ | R.I.P. |    *    ☆ ",
-                    "     /￣￣￣\\ ☆      *"
+                var tombstone = ["――٩―|________||✿｡――――/―ノ―――ヾ―――", "    | ~----~ ||  *",
+                    " ☆  | R.I.P. ||         ☆ ",
+                    "     /￣￣￣\\\\ ☆      *"
                 ]
                 if (n >= 0) {
                     setTimeout(function() {
                         bot.say(to, tombstone[n]);
                         loop(n - 1);
-                    }, 1);
+                    }, 1000);
                 }
             }
             loop(5);
@@ -51,6 +51,10 @@ bot.addListener("message", function(from, to, message) {
             var randomnumber = math.floor(Math.random() * 16)
             bot.say(to, faces[randomnumber]);
         }
+	  else if (word.toLowerCase() == "kys" ||
+		  word.toLowerCase() == "kms") {
+		  bot.say(to, "／(x~x)＼");
+	  }
     });
 });
 bot.addListener("ctcp-version", function(from, to, message) {
