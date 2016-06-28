@@ -68,7 +68,7 @@ function randomFromArray(arr) {
         }
         
         message.split(" ").forEach((element) => {
-            let word = element.toLowerCase().replace(/[^a-z]+/g, "");
+            let word = element.toLowerCase().replace(/[^_-z]+/g, "");
             
             switch (word) {
                 case "rip":
@@ -85,8 +85,16 @@ function randomFromArray(arr) {
                     break;
                 case "kys":
                 case "kms":
-                    bot.say(to, "／(x~x)＼");
+		case "dead":
+                    bot.say(to, "／(x~x)＼ अजीव");
                     break;
+		case "holy":
+		case "israel":
+		    bot.say(to, "ゞ◎Д◎ヾ धावनं करोति { कृ }");
+		    break;
+		case "ghost_bot":
+		    bot.say(to, "(((╬  ╬) ईङ्खति ");
+		    break;
             }
         });
     });
