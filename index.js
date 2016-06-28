@@ -89,7 +89,8 @@ function randomFromArray(arr) {
                     bot.say(to, "／(x~x)＼ अजीव");
                     break;
 		case "holy":
-		case "israel":
+		case "god":
+		case "jesus":
 		    bot.say(to, "ゞ◎Д◎ヾ धावनं करोति { कृ }");
 		    break;
 		case "ghost_bot":
