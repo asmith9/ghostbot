@@ -12,10 +12,6 @@ var config = {
     nickservPass: "userpass"
 }
 var bot = new irc.Client(config.server, config.nick, config)
-var tombstone = [" |________|",
-    " |  RIP   |",
-    "  /￣￣￣\\"
-]
 
 var faces = ["(ц｀ω´ц*)", "“ψ(｀∇´)ψ", "ψ(*｀ー´)ψ", "Ψ(｀▽´)Ψ",
     "Ψ(｀◇´)Ψ", "(屮｀∀´)屮", "Щ(･｀ω´･Щ)", "Ψ(￣∀￣)Ψ",
@@ -27,8 +23,6 @@ bot.addListener("message", function(from, to, message) {
     if (config.ignoreList.indexOf(from) >= 0) {
         return false
     }
-    var man
-    var c
     message.split(" ").forEach(function(element) {
         word = element.replace(/[^a-zA-Z]+/g, '')
         if (word.toLowerCase() == "rip") {
