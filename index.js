@@ -1,71 +1,114 @@
-var irc = require("irc");
-var math = require("math");
+"use strict"
 
-var config = {
+/*
+    Imports
+*/
+
+let IrcClient = require("irc").Client;
+
+/*
+    Constants
+*/
+
+const CONFIG = {
     server: "irc.rizon.net",
-    channels: ["#pasta"],
+    channels: ["##pasta"],
     ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
     nick: "ghost_bot",
     userName: "username",
     realName: "man",
     nickservEnabled: true,
-    nickservPass: "userpass"
+    nickservPass: "userpass",
+};
+
+const TOMBSTONE = [
+    "     /￣￣￣\\\\ ☆      *",
+    " ☆  | R.I.P. ||         ☆ ",
+    "    | ~----~ ||  *",
+    "――٩―|________||✿｡――――/―ノ―――ヾ―――", 
+];
+
+const FACES = [
+    "(ц｀ω´ц*)",
+    "“ψ(｀∇´)ψ",
+    "ψ(*｀ー´)ψ",
+    "Ψ(｀▽´)Ψ",
+    "Ψ(｀◇´)Ψ",
+    "(屮｀∀´)屮",
+    "Щ(･｀ω´･Щ)",
+    "Ψ(￣∀￣)Ψ",
+    "Ψ(☆ｗ☆)Ψ",
+    "Ψ( ●｀▽´● )Ψ",
+    "ψ（｀Д´）ψ",
+    "ლ(｀∀´ლ)",
+    "＜(●｀∀´●)＞”",
+    "o(○｀ω´○)9",
+    "ρ(｀.´)ρ",
+    "पुनः कदा मेलिष्यामः ?"
+];
+
+/*
+    Functions
+*/
+
+function randomFromArray(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
 }
-var bot = new irc.Client(config.server, config.nick, config)
 
-var faces = ["(ц｀ω´ц*)", "“ψ(｀∇´)ψ", "ψ(*｀ー´)ψ", "Ψ(｀▽´)Ψ",
-    "Ψ(｀◇´)Ψ", "(屮｀∀´)屮", "Щ(･｀ω´･Щ)", "Ψ(￣∀￣)Ψ",
-    "Ψ(☆ｗ☆)Ψ", "Ψ( ●｀▽´● )Ψ", "ψ（｀Д´）ψ", "ლ(｀∀´ლ)",
-    "＜(●｀∀´●)＞”", "o(○｀ω´○)9", "ρ(｀.´)ρ", "पुनः कदा मेलिष्यामः ?"
-]
+/*
+    Program
+*/
 
-bot.addListener("message", function(from, to, message) {
-    if (config.ignoreList.indexOf(from) >= 0) {
-        return false
-    }
-    message.split(" ").forEach(function(element) {
-        word = element.replace(/[^a-zA-Z]+/g, '')
-        if (word.toLowerCase() == "rip") {
-            function loop(n) {
-                var tombstone = ["――٩―|________||✿｡――――/―ノ―――ヾ―――", "    | ~----~ ||  *",
-                    " ☆  | R.I.P. ||         ☆ ",
-                    "     /￣￣￣\\\\ ☆      *"
-                ]
-                if (n >= 0) {
-                    setTimeout(function() {
-                        bot.say(to, tombstone[n]);
-                        loop(n - 1);
-                    }, 1000);
-                }
-            }
-            loop(5);
-        } else if (word.toLowerCase() == "spooky" ||
-            word.toLowerCase() == "scary" ||
-            word.toLowerCase() == "skeletons") {
-            var randomnumber = math.floor(Math.random() * 16)
-            bot.say(to, faces[randomnumber]);
+{
+    let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG);
+
+    bot.addListener("message", (nick, to, message) => {
+        if (CONFIG.ignoreList.indexOf(nick) >= 0) {
+            return;
         }
-	  else if (word.toLowerCase() == "kys" ||
-		  word.toLowerCase() == "kms") {
-		  bot.say(to, "／(x~x)＼");
-	  }
+        
+        message.split(" ").forEach((element) => {
+            let word = element.toLowerCase().replace(/[^a-z]+/g, "");
+            
+            switch (word) {
+                case "rip":
+                    TOMBSTONE.forEach((line, i) => {
+                        setTimeout((line) => {
+                            bot.say(to, line);
+                        }, 1000 * i, line);
+                    });
+                    break;
+                case "spooky":
+                case "scary":
+                case "skeletons":
+                    bot.say(to, randomFromArray(FACES));
+                    break;
+                case "kys":
+                case "kms":
+                    bot.say(to, "／(x~x)＼");
+                    break;
+            }
+        });
     });
-});
-bot.addListener("ctcp-version", function(from, to, message) {
-    bot.notice(from, "\01VERSION ayylmao\01")
-});
 
-bot.on("error", function(message) {
-    return console.log(message)
-})
+    bot.addListener("ctcp-version", (nick, to, message) => {
+        bot.notice(nick, "\u0001VERSION ayylmao\u0001");
+    });
 
-bot.on("registered", function() {
-    if (config.nickservEnabled) {
-        bot.say("NickServ", "IDENTIFY " + config.nickservPass)
-    }
-})
+    bot.on("error", (message) => {
+        console.log(message);
+        return;
+    });
 
-bot.on("invite", function(channel, nick) {
-    bot.join(channel)
-    return bot.say(channel, nick + " here lies ghost bot, rip jones McCucky!")
-})
+    bot.on("registered", () => {
+        if (CONFIG.nickservEnabled) {
+            bot.say("NickServ", `IDENTIFY ${CONFIG.nickservPass}`);
+        }
+    });
+
+    bot.on("invite", (channel, nick) => {
+        bot.join(channel);
+        bot.say(channel, `${nick} here lies ghost bot, rip jones McCucky!`);
+        return;
+    });
+}
