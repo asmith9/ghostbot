@@ -3,7 +3,7 @@ var math = require("math");
 
 var config = {
     server: "irc.rizon.net",
-    channels: ["##pasta"],
+    channels: ["#pasta"],
     ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
     nick: "ghost_bot",
     userName: "username",
