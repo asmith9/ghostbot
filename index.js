@@ -12,7 +12,7 @@ let IrcClient = require("irc").Client;
 
 const CONFIG = {
     server: "irc.rizon.net",
-    channels: ["##pasta"],
+    channels: ["#pasta"],
     ignoreList: ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
     nick: "ghost_bot",
     userName: "username",
@@ -68,7 +68,7 @@ function randomFromArray(arr) {
         }
         
         message.split(" ").forEach((element) => {
-            let word = element.toLowerCase().replace(/[^_-z]+/g, "");
+            let word = element.toLowerCase().replace(/[^_-z]+/g, "");// ^_-
             
             switch (word) {
                 case "rip":
