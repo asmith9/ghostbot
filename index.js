@@ -81,7 +81,7 @@ function writeTombstone(bot, to, victim) {
     let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG.connection);
 
     bot.addListener("message", (nick, to, message) => {
-        if (nick == "taylorswift" && Math.floor(Math.random()*50) == 49) {// 1/50 chance of replying to taylorswift. TODO: get taylorswift to always respond with "die"
+        if (nick == "taylorswift" && Math.floor(Math.random()*25) == 25 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {// 1/50 chance of replying to taylorswift. TODO: get taylorswift to always respond with "die"
             bot.say(to, `${nick}: ${randomFromArray(TAYTAYMSGS)} ;)`);
             return;
         }
@@ -101,6 +101,12 @@ function writeTombstone(bot, to, victim) {
             return;
         }
         
+        if (message.toLowerCase() == ".bots") {
+            bot.say(to, CONFIG.dotbots);
+            return;
+        }
+        
+        let res = "";
         message.split(" ").forEach((element) => {
             let word = element.toLowerCase().replace(/[^_-z]+/g, ""); // this limits words to being a-z, while still including '_' and '`'
             
@@ -108,24 +114,26 @@ function writeTombstone(bot, to, victim) {
                 case "spooky":
                 case "scary":
                 case "skeletons":
-                    bot.say(to, randomFromArray(FACES));
+                    res = randomFromArray(FACES);
                     break;
                 case "kys":
                 case "kms":
                 case "dead":
-                    bot.say(to, "／(x~x)＼ अजीव");
+                    res = "／(x~x)＼ अजीव";
                     break;
                 case "jesus":
-                    bot.say(to, `${nick}: jeebus *`);
+                    res = `${nick}: jeebus *`;
                 case "holy":
                 case "god":
-                    bot.say(to, "ゞ◎Д◎ヾ धावनं करोति { कृ }");
+                    res = "ゞ◎Д◎ヾ धावनं करोति { कृ }";
                     break;
                 case "ghost_bot":
-                    bot.say(to, "(((╬  ╬) ईङ्खति ");
+                    res = "(((╬  ╬) ईङ्खति ";
                     break;
             }
         });
+        if (res != "")
+                bot.say(to, res);
     });
 
     bot.addListener("ctcp-version", (nick) => {
@@ -135,6 +143,10 @@ function writeTombstone(bot, to, victim) {
     bot.on("error", (message) => {
         console.log(message);
         return;
+    });
+    
+    bot.on("motd", function(motd) {
+        console.log(motd);
     });
 
     bot.on("registered", () => {
