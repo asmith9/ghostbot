@@ -81,7 +81,7 @@ function writeTombstone(bot, to, victim) {
     let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG.connection);
 
     bot.addListener("message", (nick, to, message) => {
-        if (nick == "taylorswift" && Math.floor(Math.random()*25) == 25 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {// 1/50 chance of replying to taylorswift. TODO: get taylorswift to always respond with "die"
+        if (nick == "taylorswift" && Math.floor(Math.random()*25) == 24 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {// 1/25 chance of replying to taylorswift. TODO: get taylorswift to always respond with "die"
             bot.say(to, `${nick}: ${randomFromArray(TAYTAYMSGS)} ;)`);
             return;
         }
