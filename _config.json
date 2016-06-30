@@ -1,0 +1,21 @@
+{
+    "ignoreList": ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
+    "nick": "ghost_bot",
+    "server": "irc.rizon.net",
+    "dotbots": "Reporting in! [meme.js] https://github.com/asmith9/ghostbot",
+    "connection": {
+        "channels": ["#pasta"],
+        "port": 6697,
+        "secure": true,
+        "selfSigned": true,
+        "userName": "spooky",
+        "realName": "ghost_bot",
+        "floodProtection": true,
+        "floodProtectionDelay": 750,
+        "stripColors": true
+    },
+    "nickserv": {
+        "enabled": true,
+        "password": "userpass"
+    }
+};
