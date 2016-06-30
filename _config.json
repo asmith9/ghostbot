@@ -1,0 +1,19 @@
+{
+    "ignoreList": ["CummyPawsBot", "Combot", "PastaBot", "cuckbot", "kekbot", "pepebot", "katbot"],
+    "nick": "ghost_bot",
+    "server": "irc.rizon.net",
+    "connection": {
+        "channels": ["#pasta"],
+        "port": 6697,
+        "secure": true,
+        "selfSigned": true,
+        "userName": "spooky",
+        "realName": "bottykins",
+        "floodProtection": true,
+        "floodProtectionDelay": 750
+    },
+    "nickserv": {
+        "enabled": true,
+        "password": "userpass"
+    }
+};

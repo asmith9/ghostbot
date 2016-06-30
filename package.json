@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "ghost",
   "main": "index.js",
+  "private": true,
   "dependencies": {
     "irc": "~0.3.12"
   },
