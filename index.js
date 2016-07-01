@@ -6,30 +6,14 @@
 
 let IrcClient = require("irc").Client;
 const CONFIG = require("./config.json");
+const EMOTE = require("./emote.json");
+var colors = require('colors');
+//var color = require('color');
 
 /*
     Constants
 */
-
-const FACES = [
-    "(ц｀ω´ц*)",
-    "“ψ(｀∇´)ψ",
-    "ψ(*｀ー´)ψ",
-    "Ψ(｀▽´)Ψ",
-    "Ψ(｀◇´)Ψ",
-    "(屮｀∀´)屮",
-    "Щ(･｀ω´･Щ)",
-    "Ψ(￣∀￣)Ψ",
-    "Ψ(☆ｗ☆)Ψ",
-    "Ψ( ●｀▽´● )Ψ",
-    "ψ（｀Д´）ψ",
-    "ლ(｀∀´ლ)",
-    "＜(●｀∀´●)＞”",
-    "o(○｀ω´○)9",
-    "ρ(｀.´)ρ",
-    "पुनः कदा मेलिष्यामः ?"
-];
-
+	
 const TAYTAYMSGS = [
     "your words always lift my spirits, taytay",
     "i've been dying to speak to you again, dear",
@@ -52,8 +36,8 @@ function randomFromArray(arr) {
 }
 
 function writeTombstone(bot, to, victim) {
-    let second = "   ☆ | R.I.P.  ||  ";
-    let third = "    | ~----~  ||  ";
+    let second = '  ☆ '+'| R.I.P.  ║  '.grey;
+    let third = '    |   †     ║  '.grey;
     
     if (typeof victim == "undefined") {
         second += "       ☆ ";
@@ -64,10 +48,10 @@ function writeTombstone(bot, to, victim) {
     }
     
     [
-        "     /￣￣￣￣\\\\ ☆      *", // extra \s to because \ is an escape character
+        '     /￣￣￣ \\ '.grey+'☆'.blue+'      '+'*'.blue, // extra \s to because \ is an escape character
         second,
         third,
-        "――٩―|________ ||✿｡――――/―ノ―――ヾ―――"
+        '――٩―'.cyan+'|________ ║'.grey+'✿｡'.magenta+'――――/―ノ―――ヾ―――'.cyan
     ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -82,7 +66,7 @@ function writeTombstone(bot, to, victim) {
 
     bot.addListener("message", (nick, to, message) => {
         if (nick == "taylorswift" && Math.floor(Math.random()*25) == 24 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {// 1/25 chance of replying to taylorswift. TODO: get taylorswift to always respond with "die"
-            bot.say(to, `${nick}: ${randomFromArray(TAYTAYMSGS)} ;)`);
+            bot.say(to, `${nick}: ${randomFromArray(TAYTAYMSGS)} ;)`); 
             return;
         }
             
@@ -114,21 +98,24 @@ function writeTombstone(bot, to, victim) {
                 case "spooky":
                 case "scary":
                 case "skeletons":
-                    res = randomFromArray(FACES);
-                    break;
+                    res = randomFromArray(EMOTE.EVIL);
+		    break;
                 case "kys":
                 case "kms":
                 case "dead":
-                    res = "／(x~x)＼ अजीव";
+                    res = "\\(✧∀✧)/ अजीव";
                     break;
                 case "jesus":
                     res = `${nick}: jeebus *`;
-                case "holy":
+		    break;
                 case "god":
-                    res = "ゞ◎Д◎ヾ धावनं करोति { कृ }";
+                    res = randomFromArray(EMOTE.FEAR)+'धावनं करोति  कृ ";';
                     break;
+		case "boo":
+		    res = '（　(≪●≫)　）Д（　(≪●≫)　）'.red;
+		    break;
                 case "ghost_bot":
-                    res = "(((╬  ╬) ईङ्खति ";
+                    res = '(･_├┬┴┬┴┬';
                     break;
             }
         });
