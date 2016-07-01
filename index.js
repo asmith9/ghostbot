@@ -98,7 +98,7 @@ function writeTombstone(bot, to, victim) {
                 case "spooky":
                 case "scary":
                 case "skeletons":
-                    res = randomFromArray(EMOTE.EVIL);
+                    res = randomFromArray(EMOTE.FEAR);
 		    break;
                 case "kys":
                 case "kms":
@@ -110,9 +110,9 @@ function writeTombstone(bot, to, victim) {
 		    break;
                 case "god":
                     res = randomFromArray(EMOTE.FEAR)+'धावनं करोति  कृ ";';
-                    break;
+                    break;//the above line is haunted
 		case "boo":
-		    res = '（　(≪●≫)　）Д（　(≪●≫)　）'.red;
+		    res = randomFromArray(EMOTE.FEAR);
 		    break;
                 case "ghost_bot":
                     res = '(･_├┬┴┬┴┬';
