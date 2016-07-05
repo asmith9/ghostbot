@@ -7,8 +7,7 @@
 let IrcClient = require("irc").Client;
 const CONFIG = require("./config.json");
 const EMOTE = require("./emote.json");
-var colors = require('colors');
-//var color = require('color');
+const colors = require('irc-colors');
 
 /*
     Constants
@@ -36,8 +35,8 @@ function randomFromArray(arr) {
 }
 
 function writeTombstone(bot, to, victim) {
-    let second = '  ☆ '+'| R.I.P.  ║  '.grey;
-    let third = '    |   †     ║  '.grey;
+    let second = colors.grey('   ☆ | R.I.P.  || ');
+    let third = colors.grey('    |   †     || ');
     
     if (typeof victim == "undefined") {
         second += "       ☆ ";
@@ -48,10 +47,10 @@ function writeTombstone(bot, to, victim) {
     }
     
     [
-        '     /￣￣￣ \\ '.grey+'☆'.blue+'      '+'*'.blue, // extra \s to because \ is an escape character
+        colors.grey('     /￣￣￣￣\\\\ ') + colors.blue('☆') + '      ' + colors.blue('*'), // extra \s to because \ is an escape character
         second,
         third,
-        '――٩―'.cyan+'|________ ║'.grey+'✿｡'.magenta+'――――/―ノ―――ヾ―――'.cyan
+        colors.cyan('――٩―') + colors.grey('|________ ||') + colors.pink('✿｡') + colors.cyan('――――/―ノ―――ヾ―――')
     ].forEach((line, i) => {
         bot.say(to, line);
     });
