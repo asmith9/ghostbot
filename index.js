@@ -9,9 +9,6 @@ const CONFIG = require("./config.json");
 const EMOTE = require("./emote.json");
 const colors = require('irc-colors');
 
-/*
-    Constants
-*/
 	
 const TAYTAYMSGS = [
     "your words always lift my spirits, taytay",
@@ -35,7 +32,7 @@ function randomFromArray(arr) {
 }
 
 function writeTombstone(bot, to, victim) {
-    let second = colors.grey('   ☆ | R.I.P.  || ');
+    let second = colors.grey('  ☆ | R.I.P.  || ');
     let third = colors.grey('    |   †     || ');
     
     if (typeof victim == "undefined") {
@@ -45,12 +42,41 @@ function writeTombstone(bot, to, victim) {
         second += "HERE LIES ";
         third += victim;
     }
+/*
+                  _\<
+                 (   >
+                 __)(
+l           _____/  //   ___
+          /        \\  /  \\__
+          |  _     //  \     ||
+          | | \    \\  / _   ||
+          | |  |    \\/ | \  ||
+          | |_/     |/  |  | ||
+          | | \     /|  |_/  ||
+          | |  \    \|  |     >_ )
+          | |   \. _|\  |    < _|=
+          |          /_.| .  \/
+  *       | *   **  / * **  |\)/)    **
+   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//
+
+*/
     
     [
-        colors.grey('     /￣￣￣￣\\\\ ') + colors.blue('☆') + '      ' + colors.blue('*'), // extra \s to because \ is an escape character
-        second,
-        third,
-        colors.cyan('――٩―') + colors.grey('|________ ||') + colors.pink('✿｡') + colors.cyan('――――/―ノ―――ヾ―――')
+colors.blue('                  _\<        ☆'),
+colors.blue('                 (   \>'),
+colors.blue('    ☆            __)('),
+colors.blue('           _____/  //   ___'),
+colors.blue('          /        \\\\  /  \\__      ☆'),
+colors.blue('          |  _     //  \     ||'),
+colors.blue('          | | \    \\\\  / _   ||'),
+//taylor sleighs her lover right around here.
+colors.blue('          | |  |    \\\\/ | \\  ||'),
+colors.blue('          | |_/     |/  |  | ||'),
+colors.blue(' ☆        | | \\     /|  |_/  ||'),
+colors.blue('          | |  \\    \\|  |     >_ \\)'),
+colors.blue('   ☆      | |   \\. _|\\  |    < _|\\='),
+colors.blue('          |          /_.| .  \/'),
+
     ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -94,27 +120,17 @@ function writeTombstone(bot, to, victim) {
             let word = element.toLowerCase().replace(/[^_-z]+/g, ""); // this limits words to being a-z, while still including '_' and '`'
             
             switch (word) {
-                case "spooky":
-                case "scary":
-                case "skeletons":
-                    res = randomFromArray(EMOTE.FEAR);
+		case "sieg":
+		    res = "-(๑☆‿ ☆#)ᕗ";
 		    break;
-                case "kys":
-                case "kms":
-                case "dead":
-                    res = "\\(✧∀✧)/";
-                    break;
                 case "jesus":
                     res = `${nick}: jeebus *`;
 		    break;
-                case "god":
-                    res = randomFromArray(EMOTE.LOVE.magenta);
-                    break;
 		case "boo":
-		    res = randomFromArray(EMOTE.SCARY.red);
+		    res = "top kek";
 		    break;
-                case "ghost_bot":
-                    res = '(･_├┬┴┬┴┬';
+                case "ghost":
+                    res = '╭( ✖_✖ )╮';
                     break;
             }
         });
