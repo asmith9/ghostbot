@@ -4,7 +4,7 @@
     "server": "irc.rizon.net",
     "dotbots": "Reporting in! [meme.js] https://github.com/asmith9/ghostbot",
     "connection": {
-        "channels": ["#pasta"],
+        "channels": ["#pasta",""#gaycedra","#myg0t"],
         "port": 6697,
         "secure": true,
         "selfSigned": true,
@@ -15,7 +15,7 @@
         "stripColors": true
     },
     "nickserv": {
-        "enabled": true,
+        "enabled": false,
         "password": "userpass"
     }
-};
+}

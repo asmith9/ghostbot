@@ -8,6 +8,7 @@ let IrcClient = require("irc").Client;
 const CONFIG = require("./config.json");
 const EMOTE = require("./emote.json");
 var colors = require('colors');
+var c = require('irc-colors');
 //var color = require('color');
 
 /*
@@ -16,9 +17,9 @@ var colors = require('colors');
 	
 const TAYTAYMSGS = [
     "your words always lift my spirits, taytay",
-    "i've been dying to speak to you again, dear",
-    "my longing for you is supernatural, baby",
-    "just one more night. No wine, no BOOs",
+    "i've been ǫniyb to speak to you again, dear",
+    "my longing for you is lɒɿuƚɒnɿɘquƨ, baby",
+    "just one more night.. Boo!",
     "i'd ask you out to a bar sometime, but they'd just say \"no spirits\"",
     "just make an album about me pls and i wont making any more BOOring puns",
     "the washington ghost says that you and i should get together",
@@ -36,22 +37,22 @@ function randomFromArray(arr) {
 }
 
 function writeTombstone(bot, to, victim) {
-    let second = '  ☆ '+'| R.I.P.  ║  '.grey;
-    let third = '    |   †     ║  '.grey;
+    let second = '  ☆ '+'| R.I.P.  ║  '.irc.blue;
+    let third = '    |   †     ║  '.irc.blue;
     
     if (typeof victim == "undefined") {
         second += "       ☆ ";
         third += "*";
     } else {
-        second += "HERE LIES ";
+        second += "HERE LIES ".irc.blue;
         third += victim;
     }
     
     [
-        '     /￣￣￣ \\ '.grey+'☆'.blue+'      '+'*'.blue, // extra \s to because \ is an escape character
+        '     /￣￣￣ \\ '.irc.red+'☆'.irc.blue+'      '+'*'.irc.blue, // extra \s to because \ is an escape character
         second,
         third,
-        '――٩―'.cyan+'|________ ║'.grey+'✿｡'.magenta+'――――/―ノ―――ヾ―――'.cyan
+        '――٩―'.irc.cyan+'|________ ║'.irc.blue+'✿｡'.irc.magenta+'――――/―ノ―――ヾ―――'.irc.cyan
     ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -98,24 +99,24 @@ function writeTombstone(bot, to, victim) {
                 case "spooky":
                 case "scary":
                 case "skeletons":
-                    res = randomFromArray(EMOTE.FEAR);
+                    res = randomFromArray(EMOTE.FEAR.irc.red);
 		    break;
                 case "kys":
                 case "kms":
                 case "dead":
-                    res = "\\(✧∀✧)/";
+                    res = "\\(✧∀✧)/".irc.blue;
                     break;
                 case "jesus":
                     res = `${nick}: jeebus *`;
 		    break;
                 case "god":
-                    res = randomFromArray(EMOTE.LOVE.magenta);
+                    res = randomFromArray(EMOTE.LOVE.irc.blue);
                     break;
 		case "boo":
-		    res = randomFromArray(EMOTE.SCARY.red);
+		    res = randomFromArray(EMOTE.SCARY.irc.blue);
 		    break;
                 case "ghost_bot":
-                    res = '(･_├┬┴┬┴┬';
+                    res = '(･_├┬┴┬┴┬'.irc.gray;
                     break;
             }
         });
