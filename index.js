@@ -46,7 +46,7 @@ function writeTombstone(bot, to, victim) {
                   _\<
                  (   >
                  __)(
-l           _____/  //   ___
+            _____/  //   ___
           /        \\  /  \\__
           |  _     //  \     ||
           | | \    \\  / _   ||
@@ -69,7 +69,7 @@ colors.blue('           _____/  //   ___'),
 colors.blue('          /        \\\\  /  \\__      ☆'),
 colors.blue('          |  _     //  \     ||'),
 colors.blue('          | | \    \\\\  / _   ||'),
-//taylor sleighs her lover right around here.
+//taylor slays her lover right around here.
 colors.blue('          | |  |    \\\\/ | \\  ||'),
 colors.blue('          | |_/     |/  |  | ||'),
 colors.blue(' ☆        | | \\     /|  |_/  ||'),
