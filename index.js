@@ -140,7 +140,7 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
 		    res = colors.blue('the regret..');
                     break;
 		case "am":
-		    res = colors.blue('him badman?');
+		    res = colors.blue('am, was, going to, it doesnt matter');
 	            break;
 		case "going":
 		    res = colors.blue('words dont mean anything');
