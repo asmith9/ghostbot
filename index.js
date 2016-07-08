@@ -122,20 +122,29 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
             
             switch (word) {
 		case "hiya_ghostbot":
-		    res = "-(๑☆‿ ☆#)ᕗ Gruß";
+		    res = colors.blue("-(๑☆‿ ☆#)ᕗ Gruß");
 		    break;
 		case "damn":
-		    res = "DANIEL!!";
+		    res = colors.blue("DANIEL!!");
 		    break;
                 case "jesus":
                     res = `${nick}: jeebus *`;
 		    break;
 		case "boo":
-		    res = "top kek";
+		    res = colors.blue("top kek");
 		    break;
                 case "ghost":
-                    res = '╭( ✖_✖ )╮';
+                    res = colors.blue('╭( ✖_✖ )╮');
+		    break;
+		case "was":
+		    res = colors.blue('the regret..');
                     break;
+		case "am":
+		    res = colors.blue('him badman?');
+	            break;
+		case "going":
+		    res = colors.blue('words dont mean anything');
+		    break;
             }
         });
         if (res != "")
