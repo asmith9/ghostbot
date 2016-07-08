@@ -11,16 +11,16 @@ const colors = require('irc-colors');
 
 	
 const TAYTAYMSGS = [
-    "your words always lift my spirits, taytay",
+    "your words always lif† my spiri†s, †ay†ay",
     "i've been dying to speak to you again, dear",
     "my longing for you is supernatural, baby",
-    "just one more night. No wine, no BOOs",
-    "i'd ask you out to a bar sometime, but they'd just say \"no spirits\"",
-    "just make an album about me pls and i wont making any more BOOring puns",
-    "the washington ghost says that you and i should get together",
-    "remember the time when we were at blockbusters, and they said they had bambi, and i said bamBOO?",
-    "i recently published a biography about you, but i used a ghostwriter",
-    "did you hear about the party installgen2 was throwing? he said anything GHO-you know what this was a shitty pun"
+    "jus† one more nigh†. No wine, no BOOs",
+    "i'd ask you out to a bar some†ime, bu† they'd jus† say \"no spiri†s\"",
+    "jus† make an album abou† me pls and i wont making any more BOOring puns",
+    "†he washing†on ghost says that you and i should get †oge†her",
+    "remember †he †ime when we were a† blockbus†ers, and †hey said †hey had bambi, and i said bamBOO?",
+    "i recen†ly published a biography about you, bu† i used a ghos†wri†er",
+    "did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun"
 ];
 
 /*
@@ -76,7 +76,8 @@ colors.blue(' ☆        | | \\     /|  |_/  ||'),
 colors.blue('          | |  \\    \\|  |     >_ \\)'),
 colors.blue('   ☆      | |   \\. _|\\  |    < _|\\='),
 colors.blue('          |          /_.| .  \/'),
-
+colors.blue('  *       | *   **  / * **  |\)/)    **'),
+colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
     ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -120,8 +121,11 @@ colors.blue('          |          /_.| .  \/'),
             let word = element.toLowerCase().replace(/[^_-z]+/g, ""); // this limits words to being a-z, while still including '_' and '`'
             
             switch (word) {
-		case "sieg":
-		    res = "-(๑☆‿ ☆#)ᕗ";
+		case "hiya_ghostbot":
+		    res = "-(๑☆‿ ☆#)ᕗ Gruß";
+		    break;
+		case "damn":
+		    res = "DANIEL!!";
 		    break;
                 case "jesus":
                     res = `${nick}: jeebus *`;
