@@ -8,6 +8,9 @@ let IrcClient = require("irc").Client;
 const CONFIG = require("./config.json");
 const EMOTE = require("./emote.json");
 const colors = require('irc-colors');
+const colorsg = require('irc-colors').global();
+const color = require('color');
+
 
 	
 const TAYTAYMSGS = [
@@ -62,14 +65,14 @@ function writeTombstone(bot, to, victim) {
 */
     
     [
-colors.blue('                  _\<        ☆'),
-colors.blue('                 (   \>'),
-colors.blue('    ☆            __)('),
-colors.blue('           _____/  //   ___'),
-colors.blue('          /        \\\\  /  \\__      ☆'),
-colors.blue('          |  _     //  \     ||'),
+colors.green('                  _\<        ☆'),
+colors.green('                 (   \>'),
+colors.green('    ☆            __)('),
+colors.green('           _____/  //   ___'),
+colors.green('          /        \\\\  /  \\__      ☆'),
+colors.green('          |  _     //  \     ||'),
+/*
 colors.blue('          | | \    \\\\  / _   ||'),
-//taylor slays her lover right around here.
 colors.blue('          | |  |    \\\\/ | \\  ||'),
 colors.blue('          | |_/     |/  |  | ||'),
 colors.blue(' ☆        | | \\     /|  |_/  ||'),
@@ -78,6 +81,7 @@ colors.blue('   ☆      | |   \\. _|\\  |    < _|\\='),
 colors.blue('          |          /_.| .  \/'),
 colors.blue('  *       | *   **  / * **  |\)/)    **'),
 colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
+*/
     ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -118,7 +122,8 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
         
         let res = "";
         message.split(" ").forEach((element) => {
-            let word = element.toLowerCase().replace(/[^_-z]+/g, ""); // this limits words to being a-z, while still including '_' and '`'
+            //let word = element.toLowerCase().replace(/['^_-z]+/g, "");
+            let word = element;
             
             switch (word) {
 		case "hiya_ghostbot":
@@ -144,6 +149,9 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
 	            break;
 		case "going":
 		    res = colors.blue('words dont mean anything');
+		    break;
+	        case "1992":
+		    res =  'STOP'.irc.green.bold();
 		    break;
             }
         });
