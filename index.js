@@ -29,14 +29,14 @@ const TAYTAYMSGS = [
 /*
     Functions
 */
-
 function randomFromArray(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
-
+var bl = true;
 function writeTombstone(bot, to, victim) {
-    let second = colors.grey('  ☆ | R.I.P.  || ');
-    let third = colors.grey('    |   †     || ');
+    bl = false;
+    let second = colors.grey('  ☆ | R.I.P.  ║ ');
+    let third = colors.grey('    |   ✞     ║ ');
     
     if (typeof victim == "undefined") {
         second += "       ☆ ";
@@ -45,46 +45,17 @@ function writeTombstone(bot, to, victim) {
         second += "HERE LIES ";
         third += victim;
     }
-/*
-                  _\<
-                 (   >
-                 __)(
-            _____/  //   ___
-          /        \\  /  \\__
-          |  _     //  \     ||
-          | | \    \\  / _   ||
-          | |  |    \\/ | \  ||
-          | |_/     |/  |  | ||
-          | | \     /|  |_/  ||
-          | |  \    \|  |     >_ )
-          | |   \. _|\  |    < _|=
-          |          /_.| .  \/
-  *       | *   **  / * **  |\)/)    **
-   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//
-
-*/
-    
+   
     [
-colors.green('                  _\<        ☆'),
-colors.green('                 (   \>'),
-colors.green('    ☆            __)('),
-colors.green('           _____/  //   ___'),
-colors.green('          /        \\\\  /  \\__      ☆'),
-colors.green('          |  _     //  \     ||'),
-/*
-colors.blue('          | | \    \\\\  / _   ||'),
-colors.blue('          | |  |    \\\\/ | \\  ||'),
-colors.blue('          | |_/     |/  |  | ||'),
-colors.blue(' ☆        | | \\     /|  |_/  ||'),
-colors.blue('          | |  \\    \\|  |     >_ \\)'),
-colors.blue('   ☆      | |   \\. _|\\  |    < _|\\='),
-colors.blue('          |          /_.| .  \/'),
-colors.blue('  *       | *   **  / * **  |\)/)    **'),
-colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
-*/
-    ].forEach((line, i) => {
+	    //TODO make tombstone A E S T H I C 
+	    colors.bold.red.bgblue(' .  /￣￣￣￣\\') + colors.blue('*') + '       ' + colors.blue('*'),
+	    second,
+	    third,
+	    colors.cyan('――٩―')+colors.grey('|_________║')+colors.pink('flower')+colors.cyan('__________')
+   ].forEach((line, i) => {
         bot.say(to, line);
     });
+    setTimeout(() => {bl=true},50000);
 }
 
 /*
@@ -95,7 +66,7 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
     let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG.connection);
 
     bot.addListener("message", (nick, to, message) => {
-        if (nick == "taylorswift" && Math.floor(Math.random()*25) == 24 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {// 1/25 chance of replying to taylorswift. TODO: get taylorswift to always respond with "die"
+        if (nick == "taylorswift" && Math.floor(Math.random()*25) == 24 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {
             bot.say(to, `${nick}: ${randomFromArray(TAYTAYMSGS)} ;)`); 
             return;
         }
@@ -105,16 +76,14 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
         }
         
         let ripRegex = /rip (.+)/.exec(message);
-        if (ripRegex != null) {
+        if (ripRegex != null&bl==true) {
             writeTombstone(bot, to, ripRegex[1]);
             return;
         }
-        
-        if (message.toLowerCase() == "rip") {
-            writeTombstone(bot, to);
+        if (message.toLowerCase() == "rip"&bl==true) {
+	    writeTombstone(bot,to);
             return;
         }
-        
         if (message.toLowerCase() == ".bots") {
             bot.say(to, CONFIG.dotbots);
             return;
@@ -126,14 +95,14 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
             let word = element;
             
             switch (word) {
-		case "hiya_ghostbot":
+		case "hiya":
 		    res = colors.blue("-(๑☆‿ ☆#)ᕗ Gruß");
 		    break;
 		case "damn":
-		    res = colors.blue("DANIEL!!");
+		    res = colors.blue('DANIEL!!'+colors.bluecyan(EMOTE.LAUGH));
 		    break;
-                case "jesus":
-                    res = `${nick}: jeebus *`;
+                case "ghost_bot":
+                    res = colors.blue(`${nick}: wat`);
 		    break;
 		case "boo":
 		    res = colors.blue("top kek");
@@ -142,7 +111,7 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
                     res = colors.blue('╭( ✖_✖ )╮');
 		    break;
 		case "was":
-		    res = colors.blue('the regret..');
+		    res = colors.blue('the regret..'+colors.blue(EMOTE.FEAR));
                     break;
 		case "am":
 		    res = colors.blue('am, was, going to, it doesnt matter');
@@ -153,6 +122,13 @@ colors.green('   \))ejm97/.,(//,,..,,\||(,wo,\ ).((//'),
 	        case "1992":
 		    res =  'STOP'.irc.green.bold();
 		    break;
+		case "cold":
+		    res = colors.blue("ur damn right it's cold in here.");
+		    break;
+		case "song":
+		    res = colors.blue("Check out my soundcloud https://soundcloud.com/asmith0/winter-cherry");
+		    break;
+
             }
         });
         if (res != "")
