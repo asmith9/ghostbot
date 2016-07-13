@@ -27,7 +27,7 @@ const TAYTAYMSGS = [
 ];
 const MSGS = [
     colors.blue("-(๑☆‿ ☆#)ᕗ Gruß"),
-    'DANIEL!!'+colors.bluecyan(EMOTE.LAUGH),
+    'DAMN, DANIEL!!'+colors.bluecyan(EMOTE.LAUGH),
 //    colors.blue(`${nick}: wat`),
     colors.blue("top kek"),
     colors.blue('shut up'),
