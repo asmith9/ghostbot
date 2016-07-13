@@ -10,20 +10,33 @@ const EMOTE = require("./emote.json");
 const colors = require('irc-colors');
 const colorsg = require('irc-colors').global();
 const color = require('color');
-
+let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG.connection);
 
 	
 const TAYTAYMSGS = [
-    "your words always lif† my spiri†s, †ay†ay",
-    "i've been dying to speak to you again, dear",
-    "my longing for you is supernatural, baby",
-    "jus† one more nigh†. No wine, no BOOs",
-    "i'd ask you out to a bar some†ime, bu† they'd jus† say \"no spiri†s\"",
-    "jus† make an album abou† me pls and i wont making any more BOOring puns",
-    "†he washing†on ghost says that you and i should get †oge†her",
-    "remember †he †ime when we were a† blockbus†ers, and †hey said †hey had bambi, and i said bamBOO?",
-    "i recen†ly published a biography about you, bu† i used a ghos†wri†er",
-    "did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun"
+    colors.blue("your words always lif† my spiri†s, †ay†ay"),
+    colors.blue("i've been dying to speak to you again, dear"),
+    colors.blue("my longing for you is supernatural, baby"),
+    colors.blue("jus† one more nigh†. No wine, no BOOs"),
+    colors.blue("i'd ask you out to a bar some†ime, bu† they'd jus† say \"no spiri†s\""),
+    colors.blue("jus† make an album abou† me pls and i wont making any more BOOring puns"),
+    colors.blue("†he washing†on ghost says that you and i should get †oge†her"),
+    colors.blue("remember †he †ime when we were a† blockbus†ers, and †hey said †hey had bambi, and i said bamBOO?"),
+    colors.blue("i recen†ly published a biography about you, bu† i used a ghos†wri†er"),
+    colors.blue("did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun")
+];
+const MSGS = [
+    colors.blue("-(๑☆‿ ☆#)ᕗ Gruß"),
+    'DANIEL!!'+colors.bluecyan(EMOTE.LAUGH),
+//    colors.blue(`${nick}: wat`),
+    colors.blue("top kek"),
+    colors.blue('shut up'),
+    colors.blue('╭( ✖_✖ )╮'),
+    colors.blue('the regret..'+colors.blue(EMOTE.FEAR)),
+    colors.blue('am, was, going to, it doesnt matter'),
+    colors.blue('words dont mean anything'),
+    'STOP'.irc.green.bold(),
+    colors.blue("ur damn right it's cold in here.")
 ];
 
 /*
@@ -35,20 +48,20 @@ function randomFromArray(arr) {
 var bl = true;
 function writeTombstone(bot, to, victim) {
     bl = false;
-    let second = colors.cyan('  ☆ |         ║ ');
-    let third = colors.pink('    |   ✞     ║ ');
+    let second = colors.cyan('  ☆ |   ✞     ║ ');
+    let third = colors.pink('    |         ║ ');
     
     if (typeof victim == "undefined") {
         second += "       ☆ ";
         third += "*";
     } else {
-        second += "HERE LIES ";
-        third += victim;
+        second += colors.blue("HERE LIES ");
+        third += colors.blue(victim);
     }
    
     [
 	    //TODO make tombstone A E S T H I C 
-	    colors.red(' .  | R.I.P.  ║        ') + colors.blue('      *') + '       ' + colors.blue('*'),
+	    colors.cyan(' .  | R.I.P.  ║        ') + colors.blue('      *'),
 	    second,
 	    third,
 	    colors.cyan('――٩―')+colors.cyan('|_________║')+colors.pink('*')+colors.cyan('__________')
@@ -61,9 +74,6 @@ function writeTombstone(bot, to, victim) {
 /*
     Program
 */
-
-{
-    let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG.connection);
 
     bot.addListener("message", (nick, to, message) => {
         if (nick == "taylorswift" && Math.floor(Math.random()*25) == 24 && message.toLowerCase().indexOf("youtube") == -1 && message.toLowerCase().indexOf("[url]") == -1) {
@@ -89,54 +99,10 @@ function writeTombstone(bot, to, victim) {
             return;
         }
         
-        let res = "";
-        message.split(" ").forEach((element) => {
-            //let word = element.toLowerCase().replace(/['^_-z]+/g, "");
-            let word = element;
-            
-            switch (word) {
-		case "hiya":
-		    res = colors.blue("-(๑☆‿ ☆#)ᕗ Gruß");
-		    break;
-		case "damn":
-		    res = colors.blue('DANIEL!!'+colors.bluecyan(EMOTE.LAUGH));
-		    break;
-                case "ghost_bot":
-                    res = colors.blue(`${nick}: wat`);
-		    break;
-		case "boo":
-		    res = colors.blue("top kek");
-		    break;
-		case "kys":
-		    res = colors.blue('shut up');
-		    break;
-                case "ghost":
-                    res = colors.blue('╭( ✖_✖ )╮');
-		    break;
-		case "was":
-		    res = colors.blue('the regret..'+colors.blue(EMOTE.FEAR));
-                    break;
-		case "am":
-		    res = colors.blue('am, was, going to, it doesnt matter');
-	            break;
-		case "going":
-		    res = colors.blue('words dont mean anything');
-		    break;
-	        case "1992":
-		    res =  'STOP'.irc.green.bold();
-		    break;
-		case "cold":
-		    res = colors.blue("ur damn right it's cold in here.");
-		    break;
-		case "song":
-		    res = colors.blue("Check out my soundcloud https://soundcloud.com/asmith0/winter-cherry");
-		    break;
-
-            }
-        });
-        if (res != "")
-                bot.say(to, res);
-    });
+            //let word = element.toLowerCase().replace(/[^'A-z]+/g, "");
+                            //bot.say(to, res);
+	
+        setInterval(() => {bot.say(to,randomFromArray(MSGS))},720000);
 
     bot.addListener("ctcp-version", (nick) => {
         bot.notice(nick, "\u0001VERSION ayylmao\u0001");
@@ -162,4 +128,4 @@ function writeTombstone(bot, to, victim) {
         bot.say(channel, `${nick} here lies ghost bot, rip jones McCucky!`);
         return;
     });
-}
+});
