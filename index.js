@@ -35,8 +35,8 @@ function randomFromArray(arr) {
 var bl = true;
 function writeTombstone(bot, to, victim) {
     bl = false;
-    let second = colors.grey('  ☆ | R.I.P.  ║ ');
-    let third = colors.grey('    |   ✞     ║ ');
+    let second = colors.cyan('  ☆ |         ║ ');
+    let third = colors.pink('    |   ✞     ║ ');
     
     if (typeof victim == "undefined") {
         second += "       ☆ ";
@@ -48,14 +48,14 @@ function writeTombstone(bot, to, victim) {
    
     [
 	    //TODO make tombstone A E S T H I C 
-	    colors.bold.red.bgblue(' .  /￣￣￣￣\\') + colors.blue('*') + '       ' + colors.blue('*'),
+	    colors.red(' .  | R.I.P.  ║        ') + colors.blue('      *') + '       ' + colors.blue('*'),
 	    second,
 	    third,
-	    colors.cyan('――٩―')+colors.grey('|_________║')+colors.pink('flower')+colors.cyan('__________')
+	    colors.cyan('――٩―')+colors.cyan('|_________║')+colors.pink('*')+colors.cyan('__________')
    ].forEach((line, i) => {
         bot.say(to, line);
     });
-    setTimeout(() => {bl=true},50000);
+    setTimeout(() => {bl=true},30000);
 }
 
 /*
@@ -106,6 +106,9 @@ function writeTombstone(bot, to, victim) {
 		    break;
 		case "boo":
 		    res = colors.blue("top kek");
+		    break;
+		case "kys":
+		    res = colors.blue('shut up');
 		    break;
                 case "ghost":
                     res = colors.blue('╭( ✖_✖ )╮');
