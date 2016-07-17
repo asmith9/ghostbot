@@ -26,17 +26,19 @@ const TAYTAYMSGS = [
     colors.blue("did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun")
 ];
 const MSGS = [
-    colors.blue("-(๑☆‿ ☆#)ᕗ Gruß"),
-    'DAMN, DANIEL!!'+colors.bluecyan(EMOTE.LAUGH),
+//    colors.blue("-(๑☆‿ ☆#)ᕗ Gruß"),
+//    'DAMN, DANIEL!!'+colors.bluecyan(EMOTE.LAUGH),
 //    colors.blue(`${nick}: wat`),
-    colors.blue("top kek"),
-    colors.blue('shut up'),
-    colors.blue('╭( ✖_✖ )╮'),
-    colors.blue('the regret..'+colors.blue(EMOTE.FEAR)),
-    colors.blue('am, was, going to, it doesnt matter'),
-    colors.blue('words dont mean anything'),
-    'STOP'.irc.green.bold(),
-    colors.blue("ur damn right it's cold in here.")
+//    colors.blue("top kek"),
+//    colors.blue('shut up'),
+//    colors.blue('╭( ✖_✖ )╮'),
+//    colors.blue('the regret..'+colors.blue(EMOTE.FEAR)),
+//    colors.blue('am, was, going to, it doesnt matter'),
+//    colors.blue('words dont mean anything'),
+//    'STOP'.irc.green.bold(),
+//    colors.blue("ur damn right it's cold in here.")
+      colors.cyan("IT'S A LONG WAY DOWN"),
+      colors.cyan.bgblack("https://soundcloud.com/divine/holdon")
 ];
 
 /*
@@ -48,23 +50,23 @@ function randomFromArray(arr) {
 var bl = true;
 function writeTombstone(bot, to, victim) {
     bl = false;
-    let second = colors.cyan('  ☆ |   ✞     ║ ');
-    let third = colors.pink('    |         ║ ');
+    let second = colors.cyan.bgblack("  ☆ |   ✞     ║ ");
+    let third = colors.cyan.bgblack("    |         ║ ");
     
     if (typeof victim == "undefined") {
-        second += "       ☆ ";
-        third += "*";
+        second += colors.cyan.bgblack("       ☆ ");
+        third += colors.cyan.bgblack("*");
     } else {
-        second += colors.blue("HERE LIES ");
-        third += colors.blue(victim);
+        second += colors.cyan.bgblack("HERE LIES     ");
+        third += colors.cyan.bgblack(victim+"          ");
     }
    
     [
 	    //TODO make tombstone A E S T H I C 
-	    colors.cyan(' .  | R.I.P.  ║        ') + colors.blue('      *'),
+	    colors.cyan.bgblack(" .  ")+colors.cyan.bgblack("| R.I.P.  ║        ") + colors.cyan.bgblack("      *"),
 	    second,
 	    third,
-	    colors.cyan('――٩―')+colors.cyan('|_________║')+colors.pink('*')+colors.cyan('__________')
+	    colors.cyan.bgblack("――٩―")+colors.cyan.bgblack("|_________║")+colors.cyan.bgblack("―――――――――――――――")
    ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -102,7 +104,7 @@ function writeTombstone(bot, to, victim) {
             //let word = element.toLowerCase().replace(/[^'A-z]+/g, "");
                             //bot.say(to, res);
 	
-        setInterval(() => {bot.say(to,randomFromArray(MSGS))},720000);
+        //setInterval(() => {bot.say(to,randomFromArray(MSGS))},32000); doesn't work :(
 
     bot.addListener("ctcp-version", (nick) => {
         bot.notice(nick, "\u0001VERSION ayylmao\u0001");
