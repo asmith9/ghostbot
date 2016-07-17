@@ -9,34 +9,33 @@ const CONFIG = require("./config.json");
 const EMOTE = require("./emote.json");
 const colors = require('irc-colors');
 const colorsg = require('irc-colors').global();
-const color = require('color');
 let bot = new IrcClient(CONFIG.server, CONFIG.nick, CONFIG.connection);
 
 	
 const TAYTAYMSGS = [
-    colors.blue("your words always lif† my spiri†s, †ay†ay"),
-    colors.blue("i've been dying to speak to you again, dear"),
-    colors.blue("my longing for you is supernatural, baby"),
-    colors.blue("jus† one more nigh†. No wine, no BOOs"),
-    colors.blue("i'd ask you out to a bar some†ime, bu† they'd jus† say \"no spiri†s\""),
-    colors.blue("jus† make an album abou† me pls and i wont making any more BOOring puns"),
-    colors.blue("†he washing†on ghost says that you and i should get †oge†her"),
-    colors.blue("remember †he †ime when we were a† blockbus†ers, and †hey said †hey had bambi, and i said bamBOO?"),
-    colors.blue("i recen†ly published a biography about you, bu† i used a ghos†wri†er"),
-    colors.blue("did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun")
+    colors.violet("your words always lif† my spiri†s, †ay†ay"),
+    colors.violet("i've been dying to speak to you again, dear"),
+    colors.violet("my longing for you is supernatural, baby"),
+    colors.violet("jus† one more nigh†. No wine, no BOOs"),
+    colors.violet("i'd ask you out to a bar some†ime, bu† they'd jus† say \"no spiri†s\""),
+    colors.violet("jus† make an album abou† me pls and i wont making any more BOOring puns"),
+    colors.violet("†he washing†on ghost says that you and i should get †oge†her"),
+    colors.violet("remember †he †ime when we were a† blockbus†ers, and †hey said †hey had bambi, and i said bamBOO?"),
+    colors.violet("i recen†ly published a biography about you, bu† i used a ghos†wri†er"),
+    colors.violet("did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun")
 ];
 const MSGS = [
-//    colors.blue("-(๑☆‿ ☆#)ᕗ Gruß"),
-//    'DAMN, DANIEL!!'+colors.bluecyan(EMOTE.LAUGH),
-//    colors.blue(`${nick}: wat`),
-//    colors.blue("top kek"),
-//    colors.blue('shut up'),
-//    colors.blue('╭( ✖_✖ )╮'),
-//    colors.blue('the regret..'+colors.blue(EMOTE.FEAR)),
-//    colors.blue('am, was, going to, it doesnt matter'),
-//    colors.blue('words dont mean anything'),
+//    colors.violet("-(๑☆‿ ☆#)ᕗ Gruß"),
+//    'DAMN, DANIEL!!'+colors.violetcyan(EMOTE.LAUGH),
+//    colors.violet(`${nick}: wat`),
+//    colors.violet("top kek"),
+//    colors.violet('shut up'),
+//    colors.violet('╭( ✖_✖ )╮'),
+//    colors.violet('the regret..'+colors.violet(EMOTE.FEAR)),
+//    colors.violet('am, was, going to, it doesnt matter'),
+//    colors.violet('words dont mean anything'),
 //    'STOP'.irc.green.bold(),
-//    colors.blue("ur damn right it's cold in here.")
+//    colors.violet("ur damn right it's cold in here.")
       colors.cyan("IT'S A LONG WAY DOWN"),
       colors.cyan.bgblack("https://soundcloud.com/divine/holdon")
 ];
@@ -50,23 +49,24 @@ function randomFromArray(arr) {
 var bl = true;
 function writeTombstone(bot, to, victim) {
     bl = false;
-    let second = colors.cyan.bgblack(" ☆ ")+colors.black.bgwhite(" R.I.P. ║");
+    let second = colors.navy.bgblack(" ☆ ")+colors.black.bgwhite(" R.I.P. ║");
     let third =  colors.cyan.bgblack("      ")+colors.black.bgwhite("  ║");
     
     if (typeof victim == "undefined") {
-        second += colors.cyan.bgblack("       ☆ ");
+        second += colors.navy.bgblack("       ☆ ");
         third += colors.cyan.bgblack("*          ");
     } else {
-        second += colors.cyan.bgblack("HERE LIES   ");
-        third += colors.cyan.bgblack("   "+victim+"         ");
+        second += colors.cyan.bgblack("  HERE LIES ");
+        third += colors.cyan.bgblack("     "+victim+"       ");
     }
    
     [
 	    //TODO make tombstone A E S T H I C 
-	    colors.cyan.bgblack("      ")+colors.black.bgwhite("  ║") + colors.cyan.bgblack("        *      "),
+	    colors.cyan.bgblack("      ")+colors.black.bgwhite("  ║") + colors.purple.bgblack("         ☆     "),
 	    second,
 	    third,
-	    colors.cyan.bgblack("――٩―")+colors.cyan.bgblack("  ")+colors.black.bgwhite("  ║")+colors.cyan.bgblack("―――――――――――――――")
+	    colors.cyan.bgteal("  ٩ ")+colors.cyan.bgteal("  ")+colors.black.bgwhite("  ║")+colors.cyan.bgteal("               "),
+	    colors.cyan.bgteal("                        ")
    ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -104,7 +104,7 @@ function writeTombstone(bot, to, victim) {
             //let word = element.toLowerCase().replace(/[^'A-z]+/g, "");
                             //bot.say(to, res);
 	
-        setInterval(() => {bot.say(to,randomFromArray(MSGS))},32000);
+        //setInterval(() => {bot.say(to,randomFromArray(MSGS))},32000);
 
     bot.addListener("ctcp-version", (nick) => {
         bot.notice(nick, "\u0001VERSION ayylmao\u0001");
