@@ -50,23 +50,23 @@ function randomFromArray(arr) {
 var bl = true;
 function writeTombstone(bot, to, victim) {
     bl = false;
-    let second = colors.cyan.bgblack("  ☆ |   ✞     ║ ");
-    let third = colors.cyan.bgblack("    |         ║ ");
+    let second = colors.cyan.bgblack(" ☆ ")+colors.black.bgwhite(" R.I.P. ║");
+    let third =  colors.cyan.bgblack("      ")+colors.black.bgwhite("  ║");
     
     if (typeof victim == "undefined") {
         second += colors.cyan.bgblack("       ☆ ");
-        third += colors.cyan.bgblack("*");
+        third += colors.cyan.bgblack("*          ");
     } else {
-        second += colors.cyan.bgblack("HERE LIES     ");
-        third += colors.cyan.bgblack(victim+"          ");
+        second += colors.cyan.bgblack("HERE LIES   ");
+        third += colors.cyan.bgblack("   "+victim+"         ");
     }
    
     [
 	    //TODO make tombstone A E S T H I C 
-	    colors.cyan.bgblack(" .  ")+colors.cyan.bgblack("| R.I.P.  ║        ") + colors.cyan.bgblack("      *"),
+	    colors.cyan.bgblack("      ")+colors.black.bgwhite("  ║") + colors.cyan.bgblack("        *      "),
 	    second,
 	    third,
-	    colors.cyan.bgblack("――٩―")+colors.cyan.bgblack("|_________║")+colors.cyan.bgblack("―――――――――――――――")
+	    colors.cyan.bgblack("――٩―")+colors.cyan.bgblack("  ")+colors.black.bgwhite("  ║")+colors.cyan.bgblack("―――――――――――――――")
    ].forEach((line, i) => {
         bot.say(to, line);
     });
@@ -104,7 +104,7 @@ function writeTombstone(bot, to, victim) {
             //let word = element.toLowerCase().replace(/[^'A-z]+/g, "");
                             //bot.say(to, res);
 	
-        //setInterval(() => {bot.say(to,randomFromArray(MSGS))},32000); doesn't work :(
+        setInterval(() => {bot.say(to,randomFromArray(MSGS))},32000);
 
     bot.addListener("ctcp-version", (nick) => {
         bot.notice(nick, "\u0001VERSION ayylmao\u0001");
