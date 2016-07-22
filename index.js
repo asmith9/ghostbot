@@ -65,7 +65,7 @@ function writeTombstone(bot, to, victim) {
 	    colors.cyan.bgblack("      ")+colors.black.bgwhite("  ║") + colors.purple.bgblack("         ☆     "),
 	    second,
 	    third,
-	    colors.cyan.bgteal("  ٩ ")+colors.cyan.bgteal("  ")+colors.black.bgwhite("  ║")+colors.cyan.bgteal("               "),
+	    colors.cyan.bgteal("    ")+colors.cyan.bgteal("  ")+colors.black.bgwhite("  ║")+colors.cyan.bgteal("               "),
 	    colors.cyan.bgteal("                        ")
    ].forEach((line, i) => {
         bot.say(to, line);
