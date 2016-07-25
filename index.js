@@ -25,19 +25,20 @@ const TAYTAYMSGS = [
     colors.violet("did you hear abou† the par†y ins†allgen2 was †hrowing? he said anything GHO-you know wha† †his was a shi††y pun")
 ];
 const MSGS = [
-//    colors.violet("-(๑☆‿ ☆#)ᕗ Gruß"),
-//    'DAMN, DANIEL!!'+colors.violetcyan(EMOTE.LAUGH),
-//    colors.violet(`${nick}: wat`),
-//    colors.violet("top kek"),
-//    colors.violet('shut up'),
-//    colors.violet('╭( ✖_✖ )╮'),
-//    colors.violet('the regret..'+colors.violet(EMOTE.FEAR)),
-//    colors.violet('am, was, going to, it doesnt matter'),
-//    colors.violet('words dont mean anything'),
-//    'STOP'.irc.green.bold(),
-//    colors.violet("ur damn right it's cold in here.")
-      colors.cyan("IT'S A LONG WAY DOWN"),
-      colors.cyan.bgblack("https://soundcloud.com/divine/holdon")
+    //colors.violet("-(๑☆‿ ☆#)ᕗ Gruß"),
+    colors.violet('DAMN, DANIEL!!')+colors.cyan(EMOTE.LAUGH),
+    //colors.violet(`${nick}: wat`),
+    colors.violet("top kek"),
+    colors.violet('shut up'),
+    //colors.violet('╭( ✖_✖ )╮'),
+    colors.violet('the regret..'+colors.violet(EMOTE.FEAR)),
+    colors.violet.bgred('ah, the sweet release of death.'),
+    //colors.violet('words dont mean anything'),
+    //'STOP'.irc.green.bold(),
+    //colors.violet("ur damn right it's cold in here."),
+    colors.cyan("IT'S A LONG WAY DOWN"),
+    //colors.cyan.bgblack("https://soundcloud.com/divine/holdon")
+    colors.cyan.bgblack("https://www.youtube.com/watch?v=_Yr5rn3Sv_4")
 ];
 
 /*
@@ -101,10 +102,13 @@ function writeTombstone(bot, to, victim) {
             return;
         }
         
-            //let word = element.toLowerCase().replace(/[^'A-z]+/g, "");
-                            //bot.say(to, res);
+        if(nick=="Lexoi" && message.toLowerCase() == ".bene") {
+		setTimeout(()=>{bot.say(to,message)},8000);
+		setTimeout(()=>{bot.say(to,".mug Lexoi")},8000);
+	}
 	
-        //setInterval(() => {bot.say(to,randomFromArray(MSGS))},32000);
+        setTimeout(() => {bl=true},30000);
+        //setInterval(() => {bot.say(to,randomFromArray(MSGS))},16000);
 
     bot.addListener("ctcp-version", (nick) => {
         bot.notice(nick, "\u0001VERSION ayylmao\u0001");
